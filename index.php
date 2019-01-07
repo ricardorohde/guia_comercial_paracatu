@@ -54,7 +54,6 @@ $empresas = $obj->listarEmpresasParacatuCard();
                         <div id="divEscondida" hidden="true">
                             <p>Resultados</p>
                         </div>
-                        <br>
                         <h1>Destaques</h1>
                         <div id="meuSlider" class="carousel slide" data-ride="carousel">                          
                             <ol class="carousel-indicators">
