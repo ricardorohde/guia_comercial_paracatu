@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 
 <?php
-$palavra = $_REQUEST['action'];
-require_once $_SERVER['DOCUMENT_ROOT'] . '/DAO/DAO.php';
-$obj = DAO::getInstance();
-$empresasEncontradas = $obj->buscarEmpresasPorPalavraChave($palavra);
-$categoriasEncontradas = $obj->buscarCategoriasPorPalavraChave($palavra);
+    $palavra = $_REQUEST['action'];
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/DAO/DAO.php';
+    $obj = DAO::getInstance();
+    $empresasEncontradas = $obj->buscarEmpresasPorPalavraChave($palavra);
+    $categoriasEncontradas = $obj->buscarCategoriasPorPalavraChave($palavra);
 ?>
 
 <html>
