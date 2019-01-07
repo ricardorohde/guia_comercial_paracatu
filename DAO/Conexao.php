@@ -28,7 +28,6 @@ class Conexao {
         if (isset(self::$instance))
             self::$instance = null;
     }
-
 }
 
 ?>
