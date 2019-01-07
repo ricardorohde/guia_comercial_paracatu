@@ -85,7 +85,7 @@ $empresas = $obj->listarEmpresasParacatuCard();
                         <br>                          
                         <div class="sobre-container">
                             <div class="sobre">    
-                                <img class="sobre-logo"src="outdoor/sobre.png"/>
+                                <a href="http://www.casadoempresarioparacatu.com.br/2015/?page_id=1033"><img class="sobre-logo"src="outdoor/sobre.png"/></a>
                             </div>  
 				                             
                         </div>
