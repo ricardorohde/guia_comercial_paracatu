@@ -10,10 +10,10 @@ class Conexao {
     
     public static function getInstance() {
         
-        $servername = "http://guiacomercialdeparacatu.com.br/";
-$username = "guiacom3_adm";
-$password = "empresarial-999";
-$dbname = "guiacom3_guia_paracatu";
+        $servername = "127.0.0.1";
+        $username = "root";
+        $password = "";
+        $dbname = "guiacom3_guia_paracatu";
         
         if (!isset(self::$instance)) {
             self::$instance = new PDO("mysql: host=$servername; dbname=$dbname", $username, $password, 
