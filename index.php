@@ -87,9 +87,9 @@ $empresas = $obj->listarEmpresasParacatuCard();
                             <div class="sobre">    
                                 <a href="http://www.casadoempresarioparacatu.com.br/2015/?page_id=1033"><img class="sobre-logo"src="outdoor/sobre.png"/></a>
                             </div>  
-				                             
+
                         </div>
-<br>         
+                        <br>         
                     </div>
 
                     <div class="tab-pane" id="second-tab" style="background-color: #ffffff">
@@ -116,18 +116,28 @@ $empresas = $obj->listarEmpresasParacatuCard();
                         <br>                    
                         <div id="lista" style="background-color: #ffffff">
                             <p><b>Empresas Que Aceitam Paracatu Card:</b></p>
-                            <ul class="list-group" style="background-color: #ffffff">
-                                <?php
-                                foreach ($empresas as &$var) {
-                                    echo '<a onclick = "encaminharParaEmpresas(' . $var->id_empresa . '.)"><li style="background-color: #f6f6f6;  margin-bottom: 3px" class = "list-group-item"><b>' . $var->nome . '</b></li></a>';
-                                }
-                                ?>
-                            </ul> 
-                        </div>                                          
-                        <br>
-                    </div>   
+                            <div class="configdiv">
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Buscar" id="palavraChavePtuCard">
+                                    <br>
+                                    <div class="col-md-offset-5">
+                                        <button id="btnBuscarPtuCard" class="btn btn-success"/>Buscar</button>                 
+                                    </div>                       
+                                </div>                   
+                                </di
+                                <ul class="list-group" style="background-color: #ffffff">
+                                    <?php
+                                    foreach ($empresas as &$var) {
+                                        echo '<a onclick = "encaminharParaEmpresas(' . $var->id_empresa . '.)"><li style="background-color: #f6f6f6;  margin-bottom: 3px" class = "list-group-item"><b>' . $var->nome . '</b></li></a>';
+                                    }
+                                    ?>
+                                </ul> 
+                            </div>                                          
+                            <br>
+                        </div>   
+                    </div>
                 </div>
-            </div>
-        </div>      
+            </div>      
     </body>
 </html>
