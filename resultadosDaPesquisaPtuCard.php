@@ -1,11 +1,11 @@
 ﻿<!DOCTYPE html>
 
 <?php
-    $palavra = $_REQUEST['action'];
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/DAO/DAO.php';
-    $obj = DAO::getInstance();
-    $empresasEncontradas = $obj->buscarEmpresasPorPalavraChave($palavra);
-    $categoriasEncontradas = $obj->buscarCategoriasPorPalavraChave($palavra);
+$palavra = $_REQUEST['action'];
+require_once $_SERVER['DOCUMENT_ROOT'] . '/DAO/DAO.php';
+$obj = DAO::getInstance();
+$empresasEncontradas = $obj->buscarEmpresasPorPalavraChave($palavra);
+$categoriasEncontradas = $obj->buscarCategoriasPorPalavraChave($palavra);
 ?>
 
 <html>
@@ -36,9 +36,13 @@
                             } else {
                                 foreach ($empresasEncontradas as $var) {
                                     if ($obj->verificarPropaganda($var->id_empresa) == 1) {
-                                        echo '<a onclick = "encaminharParaEmpresas(' . $var->id_empresa . '.)"><li style="background-color: #f6f6f6; color :#a71b1b; margin-bottom: 3px" class = "list-group-item"><b>✪  ' . strtoupper ($var->nome) . ' ✪</b></li></a>';
+                                        if ($var->paracatucard == 1) {
+                                            echo '<a onclick = "encaminharParaEmpresas(' . $var->id_empresa . '.)"><li style="background-color: #f6f6f6; color :#a71b1b; margin-bottom: 3px" class = "list-group-item"><b>✪  ' . strtoupper($var->nome) . ' ✪</b></li></a>';
+                                        }
                                     } else {
-                                       echo '<a onclick = "encaminharParaEmpresas(' . $var->id_empresa . '.)"><li style="background-color: #f6f6f6;  color:#070707; margin-bottom: 3px" class = "list-group-item"><b>' . $var->nome . '</b></li></a>';
+                                        if ($var->paracatucard == 1) {
+                                             echo '<a onclick = "encaminharParaEmpresas(' . $var->id_empresa . '.)"><li style="background-color: #f6f6f6;  color:#070707; margin-bottom: 3px" class = "list-group-item"><b>' . $var->nome . '</b></li></a>';
+                                        }
                                     }
                                 }
                             }
@@ -60,7 +64,7 @@
                         </ul> 
                     </div>
                     <br>
-<a href="/index.php"><button class="btn btn-success btn-lg">Voltar</button></a>
+                    <a href="/index.php"><button class="btn btn-success btn-lg">Voltar</button></a>
                 </div>      
             </div>
         </div>
