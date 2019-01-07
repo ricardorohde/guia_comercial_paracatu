@@ -207,6 +207,17 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $('#btnBuscarPtuCard').on('click touchstart', function () {
+        var formData = new FormData();
+        if ($('#palavraChavePtuCard').val() == "") {
+
+        } else {
+            window.location.href = '/resultadosDaPesquisaPtuCard.php?action=' + $('#palavraChavePtuCard').val();
+        }
+    })
+});
+
+$(document).ready(function () {
     $('#voltarParaListaDeCategorias2').on('click touchstart', function () {
         window.location.href = '/index.php';
     })

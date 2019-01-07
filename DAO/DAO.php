@@ -202,7 +202,7 @@ class DAO {
             echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
         }
     }
-
+   
     function buscarCategoriasPorPalavraChave($palavraChave) {
         try {
             $sql = "SELECT * FROM categoria WHERE categoria LIKE ?";
