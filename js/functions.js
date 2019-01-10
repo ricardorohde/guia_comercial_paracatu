@@ -208,7 +208,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#btnBuscarPtuCard').on('click touchstart', function () {
-        var formData = new FormData();
+       var formData = new FormData();
         if ($('#palavraChavePtuCard').val() == "") {
 
         } else {

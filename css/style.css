@@ -1,31 +1,9 @@
-.sobre-container {
-background-color: rgb(200, 200, 200);
-    width: 130px;
-    margin-bottom: 5px;
-    text-align: center;
-    border-radius: 10px;
-    margin-left: 0;
-     margin-right:  0;
-    transition-duration: 500ms;
+.sobre{
+    background-color: rgb(200, 200, 200);
 }
 
-
-
-.sobre-logo {
-    height: 70px;
-    transition-duration: 500ms;
-    
-}
-
-.sobre-container:hover {
+.sobre-container:hover{
     background-color: rgb(212, 212, 212);
     border-radius: 10px;
     transition-duration: 500ms;
-}
-
-
-
-.sobre {
-    text-align: center;
-   
 }

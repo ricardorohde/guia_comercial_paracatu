@@ -24,11 +24,11 @@ $empresas = $obj->listarEmpresasParacatuCard();
 
     <body style="background-color: #ededed;">
         <br>
-        <div class="container">
+        <div class="">
             <div class="col-md-12 col-md-offset-0" id="pagina" style="background-color: #FFF;">
                 <br>
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#first-tab" data-toggle="tab">Pesquisar</a></li>
+                    <li class="active"><a href="#first-tab" data-toggle="tab">Pagina Inicial</a></li>
                     <li><a href="#second-tab" data-toggle="tab">Categorias</a></li>
                     <li><a href="#third-tab" data-toggle="tab"><b>Paracatu Card</b></a></li>
                 </ul>
@@ -84,9 +84,8 @@ $empresas = $obj->listarEmpresasParacatuCard();
                         <br>                          
                         <div class="sobre-container">
                             <div class="sobre">    
-                                <a href="http://www.casadoempresarioparacatu.com.br/2015/?page_id=1033"><img class="sobre-logo"src="outdoor/sobre.png"/></a>
+                                <a href="http://www.casadoempresarioparacatu.com.br/2015/?page_id=1033"><img class="sobre-logo img-responsive"src="outdoor/sobre.png"/></a>
                             </div>  
-
                         </div>
                         <br>         
                     </div>
