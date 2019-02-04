@@ -1,0 +1,20 @@
+.sobre{
+    background-color: rgb(200, 200, 200);
+}
+
+.sobre-container:hover{
+    background-color: rgb(212, 212, 212);
+    border-radius: 10px;
+    transition-duration: 500ms;
+}
+body {
+    background-color: #ededed;
+    }
+
+@media screen and (max-width: 479px) { 
+
+    #pagina li {
+        margin: 0px;
+        font-size: 12px;
+    }
+}

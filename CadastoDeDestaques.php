@@ -24,14 +24,15 @@ $destaques = $obj->listarDestaques();
         <br>
         <a href="/AdicionarDestaque.php"><button class="btn btn-success">Adicionar Novo Destaque</button></a>
         <br>
+<br>
         <div class="container-fluid">
             <div class="row">
                 <?php
                 foreach ($destaques as &$var) {
-                    $pedacos = explode("htdocs", $var->destaque);
+                    $pedacos = explode("/home/guiacom3/public_html/", $var->destaque);
                     $v = $pedacos[1];
-                    echo '<div class="item"><img height="960" width="940" src=' . $v . '  /></div><BR><button onclick = "excluirDestaque('.$var->id_destaque.')" class="btn btn-DANGER" type="button">EXCLUIR</button><br><BR>'; 
-                }
+                    echo '<div class="item"><img height="1080" width="1920" src=' . $v . '  /></div><BR><button onclick = "excluirDestaque('.$var->id_destaque.')" class="btn btn-DANGER" type="button">EXCLUIR</button><br><BR>';              
+}
                 ?>  
             </div>
         </div>

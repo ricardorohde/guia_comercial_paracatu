@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <?php
 $id = $_GET['action'];
 require_once $_SERVER['DOCUMENT_ROOT'] . '/DAO/DAO.php';
@@ -38,6 +38,7 @@ if ($empresa->horario_abertura == "") {
         <script src="js/npm.js" type="text/javascript"></script>
         <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/> 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     </head>
 
     <body>
@@ -47,34 +48,17 @@ if ($empresa->horario_abertura == "") {
                 <br>
                 <div class="form-group">
                     <div id="NomeDaEmpresa">
-                        <b><p style="font-size: 140%"><?php echo $empresa->nome; ?></p></b>
+                        <b><p style="font-size: 130%"><?php echo $empresa->nome; ?></p></b>
                     </div>
-                </div>
+                </div>               
                 <div class="form-group">
-                    <div id="enderecoDaEmpresa" style="background-color:#f6f6f6" width="300" height="100">
-                        <p style="font-size: 110%"><b>Endereço:</b>&nbsp;<?php echo $empresa->endereco ?></p>
-                    </div>
+                    <i style="margin-top: 1%; font-size:20px;" class="fas fa-map-marker-alt fa-2x"> <?php echo $empresa->endereco; ?></i><br> 
+                    <a href="tel:<?php echo $empresa->telefone; ?>"><p><i style="margin-top: 3%; font-size:20px;" class="fas fa-phone-square">&nbsp;<?php echo $empresa->telefone; ?></i></p><br></a> 
+                    <a href="tel:<?php echo $empresa->celular; ?>"><p><i style="margin-top: -4%; font-size:20px;" class="fas fa-mobile-alt fa-2x">&nbsp;<?php echo $empresa->celular; ?></i></p><br></a> 
+                    <i style="margin-top: -3%; font-size:20px;" class="fas fa-clock fa-2x"> <?php echo $empresa->horario_abertura . "h ás " . $empresa->horario_fechamento . "h"; ?></i><br> 
+                    <i style="margin-top: 1%; font-size:20px;" class="fas fa-credit-card fa-2x"> <?php echo $ptucard ?></i><br> 
                 </div>
-                <div class="form-group">
-                    <div id="telefoneDaempresa" style="background-color:#f6f6f6" width="300" height="100">
-                        <a href="tel:<?php echo $empresa->telefone; ?>"><p style="font-size: 150%"><b>Telefone:</b>&nbsp;<?php echo $empresa->telefone; ?></p></a>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div id="celularDaempresa" style="background-color:#f6f6f6">                       
-                        <a href="tel:<?php echo $empresa->celular; ?>"><p style="font-size: 150%"><b>Celular: </b><?php echo $empresa->celular; ?></p></a>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div id="horario" style="background-color:#f6f6f6">
-                        <p style="font-size: 150%"><b>Horário de Funcionamento:</b>&nbsp;<?php echo $empresa->horario_abertura . "h ás " . $empresa->horario_fechamento . "h"; ?></p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div id="paracatucard" style="background-color:#f6f6f6">
-                        <p style="font-size: 150%"><b>Aceita Paracatucard ?</b>&nbsp;<?php echo $ptucard ?></p>
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <div id="servicos" style="background-color:#f6f6f6 "width="300" height="100">
                         <p style="font-size: 30%">&nbsp;<?php echo $empresa->servicos; ?></p>
