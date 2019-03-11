@@ -17,7 +17,18 @@ class DAO {
         return self::$instancia;
     }
 
-    function listarCategorias() {
+    function listarCategoriasClassificados() {
+        try {
+            $sql = "SELECT * FROM categoria_classificados ORDER BY categoria";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+    
+     function listarCategorias() {
         try {
             $sql = "SELECT * FROM categoria ORDER BY categoria";
             $stmt = Conexao::getInstance()->prepare($sql);
@@ -180,6 +191,21 @@ class DAO {
         try {
 
             $sql = "SELECT id_empresa, nome FROM empresa WHERE categoria = ? or categoria_dois = ? or categoria_tres = ? ORDER BY nome ASC";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->bindValue(1, $id);
+            $stmt->bindValue(2, $id);
+            $stmt->bindValue(3, $id);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
+        }
+    }
+    
+    function buscarClassificadosPorCategoria($id) {
+        try {
+
+            $sql = "SELECT id_classificado, nome FROM classificado WHERE categoria = ? ORDER BY nome ASC";
             $stmt = Conexao::getInstance()->prepare($sql);
             $stmt->bindValue(1, $id);
             $stmt->bindValue(2, $id);

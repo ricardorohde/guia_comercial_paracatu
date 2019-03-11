@@ -6,6 +6,7 @@ $obj = DAO::getInstance();
 $categorias = $obj->listarCategorias();
 $destaques = $obj->listarDestaques();
 $empresas = $obj->listarEmpresasParacatuCard();
+$categorias_classificados = $obj->listarCategoriasClassificados();
 ?>
 
 <html>
@@ -32,6 +33,7 @@ $empresas = $obj->listarEmpresasParacatuCard();
                             <li class="active"><a href="#first-tab" data-toggle="tab"><b><i style="font-size:12px;" class="fas fa-home fa-2x"> Home</i></b></a></li>
                             <li><a href="#second-tab" data-toggle="tab"><i style="font-size:12px;" class="fas fa-align-justify fa-2x"> Categorias</i></a></li>
                             <li><a href="#third-tab" data-toggle="tab"><i style="font-size:12px;" class="fas fa-credit-card fa-2x"> Paracatu Card</i></a></li>
+                            <li><a href="#fourth-tab" data-toggle="tab"><i style="font-size:12px;" class="fas fa-credit-card fa-2x"> Classificados</i></a></li>
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -110,11 +112,11 @@ $empresas = $obj->listarEmpresasParacatuCard();
                             <br>
                         </div>
                         <div class="tab-pane" id="third-tab" style="background-color: #ffffff">
-<br>
+                            <br>
                             <div id="lista" style="background-color: #ffffff">
-<br>
+                                <br>
                                 <p><b>Empresas Que Aceitam Paracatu Card:</b></p>
-<br>
+                                <br>
                                 <div class="configdiv">
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Buscar" id="palavraChavePtuCard">
@@ -131,6 +133,20 @@ $empresas = $obj->listarEmpresasParacatuCard();
                                     }
                                     ?>
                                 </ul>                            
+                            </div>                          
+                        </div>
+                        <div class="tab-pane" id="fourth-tab" style="background-color: #ffffff">
+                            <br>
+                            <div id="lista" style="background-color: #ffffff">
+                                <br>
+                                <p><b>Classificados:</b></p>
+                                <ul class="list-group" style="background-color: #ffffff">
+                                    <?php
+                                    foreach ($categorias_classificados as &$var) {
+                                        echo '<a onclick = "encaminharParaCategoriasClassificados(' . $var->id_categoria . '.)"><li style="background-color: #f6f6f6;  margin-bottom: 3px" class = "list-group-item">' . $var->categoria . '</li></a>';
+                                    }
+                                    ?>
+                                </ul>             
                             </div>                          
                         </div>
                     </div>   
