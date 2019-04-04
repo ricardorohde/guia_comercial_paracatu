@@ -17,18 +17,7 @@ class DAO {
         return self::$instancia;
     }
 
-    function listarCategoriasClassificados() {
-        try {
-            $sql = "SELECT * FROM categoria_classificados ORDER BY categoria";
-            $stmt = Conexao::getInstance()->prepare($sql);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $exc) {
-            echo "Error: " . $exc->getMessage();
-        }
-    }
-    
-     function listarCategorias() {
+    function listarCategorias() {
         try {
             $sql = "SELECT * FROM categoria ORDER BY categoria";
             $stmt = Conexao::getInstance()->prepare($sql);
@@ -69,7 +58,7 @@ class DAO {
 
             $sql = "SELECT empresa.id_empresa, empresa.nome, empresa.endereco, empresa.telefone, empresa.celular, empresa.horario_abertura, empresa.horario_fechamento,empresa.paracatucard,cat1.categoria as cat_um , cat2.categoria as cat_dois, "
                     . "cat3.categoria as cat_tres FROM empresa LEFT join categoria as cat1 ON (cat1.id_categoria = empresa.categoria) LEFT join categoria as cat2 "
-                    . "ON (cat2.id_categoria = empresa.categoria_dois) LEFT join categoria as cat3 ON (cat3.id_categoria = empresa.categoria_tres)";
+                    . "ON (cat2.id_categoria = empresa.categoria_dois) LEFT join categoria as cat3 ON (cat3.id_categoria = empresa.categoria_tres) ORDER BY empresa.nome";
 
             $stmt = Conexao::getInstance()->prepare($sql);
             $stmt->execute();
@@ -119,6 +108,19 @@ class DAO {
             echo "Error: " . $exc->getMessage();
         }
     }
+	
+	function buscarempresa_porNome($nome) {
+        try {
+            $sql = "select empresa.id_empresa, empresa.nome FROM empresa WHERE empresa.nome = ?";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->bindValue(1, $nome);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+
 
     function buscarempresa_dois($id) {
         try {
@@ -127,6 +129,18 @@ class DAO {
             $stmt->bindValue(1, $id);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+	
+	function buscarempresa_tres($nome) {
+        try {
+            $sql = "SELECT * FROM empresa WHERE nome = ?";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->bindValue(1, $nome);
+            $stmt->execute();
+            return $stmt->fetchAll();
         } catch (Exception $exc) {
             echo "Error: " . $exc->getMessage();
         }
@@ -191,21 +205,6 @@ class DAO {
         try {
 
             $sql = "SELECT id_empresa, nome FROM empresa WHERE categoria = ? or categoria_dois = ? or categoria_tres = ? ORDER BY nome ASC";
-            $stmt = Conexao::getInstance()->prepare($sql);
-            $stmt->bindValue(1, $id);
-            $stmt->bindValue(2, $id);
-            $stmt->bindValue(3, $id);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_OBJ);
-        } catch (Exception $exc) {
-            echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
-        }
-    }
-    
-    function buscarClassificadosPorCategoria($id) {
-        try {
-
-            $sql = "SELECT id_classificado, nome FROM classificado WHERE categoria = ? ORDER BY nome ASC";
             $stmt = Conexao::getInstance()->prepare($sql);
             $stmt->bindValue(1, $id);
             $stmt->bindValue(2, $id);
@@ -417,4 +416,64 @@ class DAO {
             echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
         }
     }
+	
+	 function listarCategorias_classificados() {
+        try {
+            $sql = "SELECT categoria FROM categoria_classificados ORDER BY categoria";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+	
+	function listarCategorias_autonomos() {
+        try {
+            $sql = "SELECT categoria FROM categoria_autonomos ORDER BY categoria";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+	
+	function listarCategorias_nome() {
+        try {
+            $sql = "SELECT categoria FROM categoria ORDER BY categoria";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+	
+	
+	function listarEmpresas_paracatucard_nome() {
+        try {
+            $sql = "SELECT nome FROM `empresa` WHERE empresa.paracatucard = 0";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+	
+	function buscarCategoriaPorNome($nome) {
+        try {
+            $sql = "select categoria.id_categoria FROM categoria where categoria = ?";
+            $stmt = Conexao::getInstance()->prepare($sql);
+			$stmt->bindValue(1, $nome);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+	
+	
+	
 }

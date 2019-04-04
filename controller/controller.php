@@ -15,7 +15,17 @@ if ($option == 'cadastrarEmpresa') {
     $categoria_um = $_REQUEST['categoria_um'];
     $categoria_dois = $_REQUEST['categoria_dois'];
     $categoria_tres = $_REQUEST['categoria_tres'];
+	
+	$a = $obj->buscarempresa_tres($nome);
+    	$b = count($a);
 
+	if($b == 0){
+		echo('Sucesso!');
+	}else{
+		echo('Esta Empresa Já Existe');
+		return;
+	}
+	
     if ($nome == "") {
         echo 'Digite O Nome Da Empresa';
         return;

@@ -33,8 +33,6 @@ if($senha_do_painel == ""){
         <a href="/painelCategorias.php"><button class="btn btn-warning">Editar/Excluir Categoria</button></a>
         <a href="/CadastoDePropagandas.php"><button class="btn btn-danger">Cadastrar Propaganda</button></a>
         <a href="/CadastoDeDestaques.php"><button class="btn btn-default">Cadastrar Destaques</button></a>
-        <a href="/painel_autonomos.php"><button class="btn btn-danger">Profissionais Autônomos</button></a>
-        
         <button class="btn btn-primary" id="deslogar">Sair</button>
         <br>
         <br>

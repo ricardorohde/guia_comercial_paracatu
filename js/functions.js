@@ -191,16 +191,8 @@ function encaminharParaEmpresas(id) {
     window.location.href = '/paginaDaEmpresa.php?action=' + id + '&url_antiga=' + window.location.href;
 }
 
-function encaminharParaClassificado(id) {
-    window.location.href = '/paginaDoClassificado.php?action=' + id + '&url_antiga=' + window.location.href;
-}
-
 function encaminharParaCategorias(id) {
     window.location.href = '/paginaDasCategorias.php?action=' + id;
-}
-
-function encaminharParaCategoriasClassificados(id) {
-    window.location.href = '/paginaDasCategoriasClassificados.php?action=' + id;
 }
 
 $(document).ready(function () {
