@@ -28,6 +28,7 @@ class DAO {
         }
     }
     
+    
     function listarCategoriasAutonomos() {
         try {
             $sql = "SELECT * FROM categoria_autonomos ORDER BY categoria";
@@ -63,6 +64,32 @@ class DAO {
             echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
         }
     }
+    
+    function cadastrarAutonomo($nome, $endereco, $telefone, $celular, $campo_horario_abertura, $campo_horario_fechamento, $paracatucard, $categoria, $categoria_dois, $categoria_tres) {
+        try {
+            $sql = "INSERT INTO `profissional_autonomo` (`id_empresa`, `nome`, `endereco`, `telefone`, `celular`, `horario_abertura`, `horario_fechamento`, "
+                    . "`paracatucard`,`categoria`, `categoria_dois`, `categoria_tres`)"
+                    . " VALUES (NULL, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
+
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $nome);
+            $p_sql->bindValue(2, $endereco);
+            $p_sql->bindValue(3, $telefone);
+            $p_sql->bindValue(4, $celular);
+            $p_sql->bindValue(5, $campo_horario_abertura);
+            $p_sql->bindValue(6, $campo_horario_fechamento);
+            $p_sql->bindValue(7, $paracatucard);
+            $p_sql->bindValue(8, $categoria);
+            $p_sql->bindValue(9, $categoria_dois);
+            $p_sql->bindValue(10, $categoria_tres);
+            if ($p_sql->execute()) {
+                return true;
+            }
+        } catch (Exception $exc) {
+            echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
+        }
+    }
+
 
     function listarEmpresas() {
         try {
@@ -162,6 +189,18 @@ class DAO {
 	function buscarempresa_tres($nome) {
         try {
             $sql = "SELECT * FROM empresa WHERE nome = ?";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->bindValue(1, $nome);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+    
+    function buscarAutonomo_tres($nome) {
+        try {
+            $sql = "SELECT * FROM profissional_autonomo WHERE nome = ?";
             $stmt = Conexao::getInstance()->prepare($sql);
             $stmt->bindValue(1, $nome);
             $stmt->execute();

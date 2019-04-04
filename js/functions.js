@@ -365,6 +365,51 @@ $(document).ready(function () {
     })
 });
 
+$(document).ready(function () {
+    $('#btnEnviarAutonomo').on('click touchstart', function () {
+        form = document.getElementById('formCadempresa');
+        var formData = new FormData();
+
+        formData.append('acao', 'cadastrarAutonomo');
+        formData.append('nome', form.campoNome.value);
+        formData.append('endereco', form.campoEndereco.value);
+        formData.append('telefone', form.campoTelefone.value);
+        formData.append('celular', form.campoCelular.value);
+
+        formData.append('campo_horario_abertura', form.campo_horario_abertura.value);
+        formData.append('campo_horario_fechamento', form.campo_horario_fechamento.value);
+        formData.append('paracatucard', form.paracatucard.value);
+
+        formData.append('categoria_um', form.categoria_um.value);
+        formData.append('categoria_dois', form.categoria_dois.value);
+        formData.append('categoria_tres', form.categoria_tres.value);
+
+        var senha = prompt("Digite A Sua Senha");
+        resp = verificaSenha();
+        if (resp == senha) {
+            $.ajax({
+                url: '/controller/controller.php',
+                data: formData,
+                type: 'post',
+
+                processData: false,
+                cache: false,
+                contentType: false,
+
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            });
+        } else {
+            alert("Senha incorreta");
+        }
+    })
+});
+
+
 
 function excluirEmpresa(id) {
 

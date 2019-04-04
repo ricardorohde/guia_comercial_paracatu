@@ -9,7 +9,6 @@ $senha_do_painel = $senha_do_painel[0]->senha;
 if($senha_do_painel == ""){
     header('Location: re87yiugstesartjnes53ty456.php');
 }
-
 ?>
 <html>
     <head>
@@ -28,7 +27,7 @@ if($senha_do_painel == ""){
         <br>
         <h1>Painel de Controle Profissionais Autônomos</h1>
         <br>
-        <a href="/cadastro.php"><button class="btn btn-success">Adicionar Nova Empresa</button></a>
+        <a href="/cadastro_autonomos.php"><button class="btn btn-success">Adicionar Novo Profissional</button></a>
         <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Adicionar Nova Categoria</button>
         <a href="/painelCategorias_Autonomos.php"><button class="btn btn-warning">Editar/Excluir Categoria</button></a>
         <a href="/CadastoDePropagandas.php"><button class="btn btn-danger">Cadastrar Propaganda</button></a>

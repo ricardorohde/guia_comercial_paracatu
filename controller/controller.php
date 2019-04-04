@@ -3,7 +3,69 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/DAO/DAO.php';
 $obj = DAO::getInstance();
 $option = $_REQUEST['acao'];
 
-if ($option == 'cadastrarEmpresa') {
+if ($option == 'cadastrarAutonomo') {
+
+    $nome = $_REQUEST['nome'];
+    $endereco = $_REQUEST['endereco'];
+    $telefone = $_REQUEST['telefone'];
+    $celular = $_REQUEST['celular'];
+    $campo_horario_abertura = $_REQUEST['campo_horario_abertura'];
+    $campo_horario_fechamento = $_REQUEST['campo_horario_fechamento'];
+    $paracatucard = $_REQUEST['paracatucard'];
+    $categoria_um = $_REQUEST['categoria_um'];
+    $categoria_dois = $_REQUEST['categoria_dois'];
+    $categoria_tres = $_REQUEST['categoria_tres'];
+	
+	$a = $obj->buscarAutonomo_tres($nome);
+    	$b = count($a);
+
+	if($b == 0){
+		echo('Sucesso!');
+	}else{
+		echo('Esta Empresa Já Existe');
+		return;
+	}
+	
+    if ($nome == "") {
+        echo 'Digite O Nome Da Empresa';
+        return;
+    }
+
+    if ($endereco == "") {
+        echo 'Digite o Endereço Da empresa';
+        return;
+    }
+
+
+    if ($categoria_um == "sem_valor") {
+        echo 'A Categoria 1 é obrigatória';
+        return;
+    }
+
+    if ($categoria_dois == "sem_valor") {
+        $categoria_dois = $categoria_um;
+    }
+
+    if ($categoria_tres == "sem_valor") {
+        $categoria_tres = $categoria_um;
+    }
+
+    if ($campo_horario_abertura == "") {
+        echo 'Digite o Horario de Abertura Da empresa';
+        return;
+    }
+
+    if ($campo_horario_fechamento == "") {
+        echo 'Digite o Horario de fechamento Da empresa';
+        return;
+    }
+
+    if ($obj->cadastrarAutonomo($nome, $endereco, $telefone, $celular, $campo_horario_abertura, $campo_horario_fechamento, $paracatucard, $categoria_um, $categoria_dois, $categoria_tres)) {
+        echo 'Cadastro Realizado Com Sucesso!';
+    } else {
+        echo 'Erro ao Fazer Cadastro!';
+    }
+}if ($option == 'cadastrarEmpresa') {
 
     $nome = $_REQUEST['nome'];
     $endereco = $_REQUEST['endereco'];
