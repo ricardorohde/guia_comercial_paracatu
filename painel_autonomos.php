@@ -26,11 +26,11 @@ if($senha_do_painel == ""){
 
     <body>
         <br>
-        <h1>Painel de Controle</h1>
+        <h1>Painel de Controle Profissionais Autônomos</h1>
         <br>
         <a href="/cadastro.php"><button class="btn btn-success">Adicionar Nova Empresa</button></a>
         <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Adicionar Nova Categoria</button>
-        <a href="/painelCategorias.php"><button class="btn btn-warning">Editar/Excluir Categoria</button></a>
+        <a href="/painelCategorias_Autonomos.php"><button class="btn btn-warning">Editar/Excluir Categoria</button></a>
         <a href="/CadastoDePropagandas.php"><button class="btn btn-danger">Cadastrar Propaganda</button></a>
         <a href="/CadastoDeDestaques.php"><button class="btn btn-default">Cadastrar Destaques</button></a>
         <button class="btn btn-primary" id="deslogar">Sair</button>
@@ -122,16 +122,16 @@ if($senha_do_painel == ""){
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="campoNome">
+                            <label for="campoNomeAutonomos">
                                 Nome:
                             </label>
-                            <form id="formAddCat">
-                                <input class="form-control" id="campoNomeCat" />
+                            <form id="formAddCatAutonomos">
+                                <input class="form-control" id="campoNomeCatAutonomos" />
                             </form>
                         </div>
                     </div>
                     <div class="modal-footer">                      
-                        <button type="button" class="btn btn-success" data-dismiss="modal" id="adicionarCat">Adicionar</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal" id="adicionarCatAutonomos">Adicionar</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>           
                     </div>
                 </div>

@@ -159,6 +159,35 @@ if ($option == 'cadastrarEmpresa') {
         echo 'Categoria Já Existente';
         return;
     }
+}else if ($option == 'adicionarCatAutonomos') {
+    $nome = $_REQUEST['nome'];
+    $categorias = $obj->listarCategoriasAutonomos();
+    $teste = true;
+
+
+    if ($nome == "") {
+        echo 'Digite o nome da categoria';
+        return;
+    } else {
+        foreach ($categorias as &$var) {
+            if ($var->categoria == $nome) {
+                $teste = false;
+            }
+        }
+    }
+
+    if ($teste) {
+        if ($obj->addCatAutonomos($nome)) {
+            echo 'Categoria Adicionada';
+            return;
+        } else {
+            echo 'Erro';
+            return;
+        }
+    } else {
+        echo 'Categoria Já Existente';
+        return;
+    }
 } else if ($option == 'excluirCategoria') {
     $id = $_REQUEST['id'];
     if ($id == null) {
@@ -166,7 +195,14 @@ if ($option == 'cadastrarEmpresa') {
     } else {
         $obj->excluirCategoria($id);
     }
-} else if ($option == 'alterarCategoria') {
+}else if ($option == 'excluirCategoriaAutonomos') {
+    $id = $_REQUEST['id'];
+    if ($id == null) {
+        echo 'Erro';
+    } else {
+        $obj->excluirCategoriaAutonomos($id);
+    }
+}else if ($option == 'alterarCategoria') {
     $id = $_REQUEST['id'];
     $novoNome = $_REQUEST['novoNome'];
     if ($novoNome == "") {
@@ -174,6 +210,21 @@ if ($option == 'cadastrarEmpresa') {
         return;
     } else {
         if ($obj->editarCategoria($id, $novoNome)) {
+            echo 'Alterado com sucesso!';
+            return;
+        } else {
+            echo 'Erro';
+            return;
+        }
+    }
+}else if ($option == 'alterarCategoriaAutonomos') {
+    $id = $_REQUEST['id'];
+    $novoNome = $_REQUEST['novoNome'];
+    if ($novoNome == "") {
+        echo 'Digite um nome!';
+        return;
+    } else {
+        if ($obj->editarCategoriaAutonomos($id, $novoNome)) {
             echo 'Alterado com sucesso!';
             return;
         } else {

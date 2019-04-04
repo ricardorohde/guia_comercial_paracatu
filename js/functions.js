@@ -438,6 +438,42 @@ function excluirCategoria(id) {
     }
 }
 
+function excluirCategoriaAutonomos(id) {
+
+    if (confirm("Tem Certeza que Deseja Excluir Esta Categoria ?")) {
+        var formData = new FormData();
+        formData.append('acao', 'excluirCategoriaAutonomos');
+        formData.append('id', id);
+
+        var senha = prompt("Digite A Sua Senha");
+        resp = verificaSenha();
+        if (resp == senha) {
+            $.ajax({
+                url: '/controller/controller.php',
+                data: formData,
+                type: 'post',
+
+                processData: false,
+                cache: false,
+                contentType: false,
+
+                success: function (data) {
+                    alert(data);
+                    location.reload();
+                },
+                error: function (data) {
+                    alert(data);
+                    location.reload();
+                }
+            });
+        } else {
+            alert("Senha incorreta");
+        }
+    } else {
+        alert('Cancelado com Sucesso');
+    }
+}
+
 function alterarEmpresa(id) {
     window.location.href = '/AlterarCadastro.php?action=' + id;
 }
@@ -450,6 +486,47 @@ function alterarCategoria(id) {
         var formData = new FormData();
 
         formData.append('acao', 'alterarCategoria');
+        formData.append('novoNome', novoNome);
+        formData.append('id', id);
+
+        var senha = prompt("Digite A Sua Senha");
+        resp = verificaSenha();
+        if (resp == senha) {
+            $.ajax({
+                url: '/controller/controller.php',
+                data: formData,
+                type: 'post',
+
+                processData: false,
+                cache: false,
+                contentType: false,
+
+                success: function (data) {
+                    alert(data);
+                    location.reload();
+
+                },
+                error: function (data) {
+                    alert(data);
+                    location.reload();
+                }
+            });
+        } else {
+            alert("Senha incorreta");
+        }
+    } else {
+        alert("Cancelado");
+    }
+}
+
+function alterarCategoriaAutonomos(id) {
+    var novoNome = prompt("DIGITE O NOVO NOME :");
+
+    if (novoNome != null)
+    {
+        var formData = new FormData();
+
+        formData.append('acao', 'alterarCategoriaAutonomos');
         formData.append('novoNome', novoNome);
         formData.append('id', id);
 
@@ -537,6 +614,41 @@ $(document).ready(function () {
 
         formData.append('acao', 'adicionarCat');
         formData.append('nome', form.campoNomeCat.value);
+
+        var senha = prompt("Digite A Sua Senha");
+        resp = verificaSenha();
+        if (resp == senha) {
+            $.ajax({
+                url: '/controller/controller.php',
+                data: formData,
+                type: 'post',
+
+                processData: false,
+                cache: false,
+                contentType: false,
+
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            });
+
+        } else {
+            alert("Senha incorreta");
+        }
+    })
+});
+
+$(document).ready(function () {
+    $('#adicionarCatAutonomos').on('click touchstart', function () {
+
+        form = document.getElementById('formAddCatAutonomos');
+        var formData = new FormData();
+
+        formData.append('acao', 'adicionarCatAutonomos');
+        formData.append('nome', form.campoNomeCatAutonomos.value);
 
         var senha = prompt("Digite A Sua Senha");
         resp = verificaSenha();

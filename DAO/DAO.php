@@ -27,6 +27,17 @@ class DAO {
             echo "Error: " . $exc->getMessage();
         }
     }
+    
+    function listarCategoriasAutonomos() {
+        try {
+            $sql = "SELECT * FROM categoria_autonomos ORDER BY categoria";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
 
     function cadastrarEmpresas($nome, $endereco, $telefone, $celular, $campo_horario_abertura, $campo_horario_fechamento, $paracatucard, $categoria, $categoria_dois, $categoria_tres) {
         try {
@@ -86,6 +97,20 @@ class DAO {
     function excluirCategoria($id) {
         try {
             $sql = "DELETE FROM categoria WHERE id_categoria = ?";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->bindValue(1, $id);
+            if ($stmt->execute()) {
+                echo 'Deletado com Sucesso!';
+            }
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Existe um empresa com esta categoria!";
+        }
+    }
+    
+    function excluirCategoriaAutonomos($id) {
+        try {
+            $sql = "DELETE FROM categoria_autonomos WHERE id_categoria = ?";
             $stmt = Conexao::getInstance()->prepare($sql);
             $stmt->bindValue(1, $id);
             if ($stmt->execute()) {
@@ -184,10 +209,39 @@ class DAO {
             echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
         }
     }
+    
+    function addCatAutonomos($nome) {
+        try {
+            $sql = "INSERT INTO `categoria_autonomos` (`id_categoria`, `categoria`) VALUES (NULL, ?)";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $nome);
+            if ($p_sql->execute()) {
+                return true;
+            }
+        } catch (Exception $exc) {
+            echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
+        }
+    }
 
     function editarCategoria($id, $novoNome) {
         try {
             $sql = "UPDATE categoria SET categoria = ?"
+                    . "WHERE id_categoria = ?;";
+
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $novoNome);
+            $p_sql->bindValue(2, $id);
+            if ($p_sql->execute()) {
+                return true;
+            }
+        } catch (Exception $exc) {
+            echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
+        }
+    }
+    
+    function editarCategoriaAutonomos($id, $novoNome) {
+        try {
+            $sql = "UPDATE categoria_autonomos SET categoria = ?"
                     . "WHERE id_categoria = ?;";
 
             $p_sql = Conexao::getInstance()->prepare($sql);
