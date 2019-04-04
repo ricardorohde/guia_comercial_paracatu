@@ -275,6 +275,32 @@ class DAO {
             echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
         }
     }
+    
+    function editarAutonomo($nome, $endereco, $telefone, $celular, $campo_horario_abertura, $campo_horario_fechamento, $paracatucard, $categoria, $categoria_dois, $categoria_tres, $id_empresa) {
+        try {
+            $sql = "UPDATE profissional_autonomo  SET nome = ?, endereco = ?, telefone = ?, celular = ?, horario_abertura = ?, horario_fechamento = ?, paracatucard = ?, categoria = ?, "
+                    . "categoria_dois = ?, categoria_tres = ?"
+                    . "WHERE id_empresa = ?;";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $nome);
+            $p_sql->bindValue(2, $endereco);
+            $p_sql->bindValue(3, $telefone);
+            $p_sql->bindValue(4, $celular);
+            $p_sql->bindValue(5, $campo_horario_abertura);
+            $p_sql->bindValue(6, $campo_horario_fechamento);
+            $p_sql->bindValue(7, $paracatucard);
+            $p_sql->bindValue(8, $categoria);
+            $p_sql->bindValue(9, $categoria_dois);
+            $p_sql->bindValue(10, $categoria_tres);
+            $p_sql->bindValue(11, $id_empresa);
+
+            if ($p_sql->execute()) {
+                return true;
+            }
+        } catch (Exception $exc) {
+            echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
+        }
+    }
 
     function addCat($nome) {
         try {
@@ -563,7 +589,7 @@ class DAO {
 	
 	function listarCategorias_autonomos() {
         try {
-            $sql = "SELECT categoria FROM categoria_autonomos ORDER BY categoria";
+            $sql = "SELECT * FROM `categoria_autonomos` WHERE 1 ";
             $stmt = Conexao::getInstance()->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);

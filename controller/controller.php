@@ -198,7 +198,64 @@ if ($option == 'cadastrarAutonomo') {
     } else {
         echo 'Erro ao Fazer Cadastro!';
     }
-} else if ($option == 'adicionarCat') {
+} else if($option == 'editarAutonomo'){
+    $pieces = explode("=", $_REQUEST['id']);
+    $id_empresa = $pieces[1];
+    $nome = $_REQUEST['nome'];
+    $endereco = $_REQUEST['endereco'];
+    $telefone = $_REQUEST['telefone'];
+    $celular = $_REQUEST['celular'];
+
+    $campo_horario_abertura = $_REQUEST['campo_horario_abertura'];
+    $campo_horario_fechamento = $_REQUEST['campo_horario_fechamento'];
+    $paracatucard = $_REQUEST['paracatucard'];
+
+    $categoria_um = $_REQUEST['categoria_um'];
+    $categoria_dois = $_REQUEST['categoria_dois'];
+    $categoria_tres = $_REQUEST['categoria_tres'];
+
+    if ($nome == "") {
+        echo 'Digite O Nome Da Empresa';
+        return;
+    }
+
+    if ($endereco == "") {
+        echo 'Digite o Telefone Da empresa';
+        return;
+    }
+
+    /* if ($telefone == "") {
+      echo 'Digite o Telefone Da empresa';
+      return;
+      }
+
+      if ($celular == "") {
+      echo 'Digite o Celular Da Empresa';
+      return;
+      } */
+
+    if ($campo_horario_abertura == "") {
+        echo 'Digite o Horario de Abertura Da empresa';
+        return;
+    }
+
+    if ($campo_horario_fechamento == "") {
+        echo 'Digite o Horario de fechamento Da empresa';
+        return;
+    }
+
+    if ($categoria_um == "sem_valor") {
+        echo 'A Categoria 1 é obrigatória';
+        return;
+    }
+
+
+    if ($obj->editarAutonomo($nome, $endereco, $telefone, $celular, $campo_horario_abertura, $campo_horario_fechamento, $paracatucard, $categoria_um, $categoria_dois, $categoria_tres, $id_empresa)) {
+        echo 'Edição Realizada Com Sucesso!';
+    } else {
+        echo 'Erro ao Fazer Cadastro!';
+    }
+}else if ($option == 'adicionarCat') {
 
     $nome = $_REQUEST['nome'];
     $categorias = $obj->listarCategorias();

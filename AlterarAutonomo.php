@@ -6,7 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/DAO/DAO.php';
 $obj = DAO::getInstance();
 $empresa = $obj->buscarAutonomo($id);
 $empresa = $empresa[0];
-$categorias = $obj->listarCategorias();
+$categorias = $obj->listarCategorias_autonomos();
 
 $campo_horario_abertura = $empresa->horario_abertura;
 $campo_horario_fechamento = $empresa->horario_fechamento;
@@ -90,7 +90,7 @@ error_reporting(E_ALL);
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <form role="form" id="formEditarEmpresa">
+                            <form role="form" id="formEditarAutonomo">
                                 <div class="form-group">
                                     <label for="campoNome">
                                         Nome:
@@ -169,7 +169,7 @@ error_reporting(E_ALL);
                                         ?>
                                     </select>
                                 </div>
-                                <button class="btn btn-primary" id="btnEditarEmpresa" type="button">
+                                <button class="btn btn-primary" id="btnEditarAutonomo" type="button">
                                     EDITAR
                                 </button>                              
                                 <INPUT TYPE="button" VALUE="VOLTAR" id="btnVoltarPainel" class="btn btn-default">
