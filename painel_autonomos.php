@@ -101,7 +101,7 @@ if($senha_do_painel == ""){
                             '<td>' . $var->cat_um . '</td>' .
                             '<td>' . $var->cat_dois . '</td>' .
                             '<td>' . $var->cat_tres . '</td>' .
-                            '<td>' . '<button class="btn btn-warning" onclick = "excluirEmpresa(' . $var->id_empresa . ');"> Excluir </button>&nbsp<button class = "btn btn-success" onclick= " alterarEmpresa(' . $var->id_empresa . ');"> Editar </button> <br>' . '</td>' .
+                            '<td>' . '<button class="btn btn-warning" onclick = "excluirAutonomo(' . $var->id_empresa . ');"> Excluir </button>&nbsp<button class = "btn btn-success" onclick= "alterarAutonomo(' . $var->id_empresa . ');"> Editar </button> <br>' . '</td>' .
                             '</tr>';
                         }
                         ?>                       

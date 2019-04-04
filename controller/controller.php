@@ -134,7 +134,14 @@ if ($option == 'cadastrarAutonomo') {
     } else {
         $obj->excluirEmpresas($id);
     }
-} else if ($option == 'editarEmpresa') {
+} else if ($option == 'excluirAutonomo') {
+    $id = $_REQUEST['id'];
+    if ($id == null) {
+        echo 'Erro';
+    } else {
+        $obj->excluirAutonomo($id);
+    }
+}  else if ($option == 'editarEmpresa') {
     $pieces = explode("=", $_REQUEST['id']);
     $id_empresa = $pieces[1];
     $nome = $_REQUEST['nome'];

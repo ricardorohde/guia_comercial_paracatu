@@ -447,6 +447,42 @@ function excluirEmpresa(id) {
     }
 }
 
+function excluirAutonomo(id) {
+
+    if (confirm("Tem Certeza que Deseja Excluir Esta Empresa ?")) {
+        var formData = new FormData();
+        formData.append('acao', 'excluirAutonomo');
+        formData.append('id', id);
+
+        var senha = prompt("Digite A Sua Senha");
+        resp = verificaSenha();
+        if (resp == senha) {
+            $.ajax({
+                url: '/controller/controller.php',
+                data: formData,
+                type: 'post',
+
+                processData: false,
+                cache: false,
+                contentType: false,
+
+                success: function (data) {
+                    alert(data);
+                    location.reload();
+                },
+                error: function (data) {
+                    alert(data);
+                    location.reload();
+                }
+            });
+        } else {
+            alert("Senha incorreta");
+        }
+    } else {
+        alert('Cancelado com Sucesso');
+    }
+}
+
 function excluirCategoria(id) {
 
     if (confirm("Tem Certeza que Deseja Excluir Esta Categoria ?")) {
@@ -521,6 +557,10 @@ function excluirCategoriaAutonomos(id) {
 
 function alterarEmpresa(id) {
     window.location.href = '/AlterarCadastro.php?action=' + id;
+}
+
+function alterarAutonomo(id) {
+    window.location.href = '/AlterarAutonomo.php?action=' + id;
 }
 
 function alterarCategoria(id) {

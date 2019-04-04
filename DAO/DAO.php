@@ -135,7 +135,20 @@ class DAO {
             echo "Error: " . $exc->getMessage();
         }
     }
+ function excluirAutonomo($id) {
+        try {
+            $sql = "DELETE FROM profissional_autonomo WHERE id_empresa = ?";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->bindValue(1, $id);
 
+            if ($stmt->execute()) {
+                echo 'Deletado com Sucesso!';
+            }
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
     function excluirCategoria($id) {
         try {
             $sql = "DELETE FROM categoria WHERE id_categoria = ?";
@@ -167,6 +180,18 @@ class DAO {
     function buscarempresa($id) {
         try {
             $sql = "SELECT * FROM empresa WHERE id_empresa = ?";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->bindValue(1, $id);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+    
+    function buscarAutonomo($id) {
+        try {
+            $sql = "SELECT * FROM profissional_autonomo WHERE id_empresa = ?";
             $stmt = Conexao::getInstance()->prepare($sql);
             $stmt->bindValue(1, $id);
             $stmt->execute();
