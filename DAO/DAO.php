@@ -69,7 +69,7 @@ class DAO {
         try {
             $sql = "INSERT INTO `profissional_autonomo` (`id_empresa`, `nome`, `endereco`, `telefone`, `celular`, `horario_abertura`, `horario_fechamento`, "
                     . "`paracatucard`,`categoria`, `categoria_dois`, `categoria_tres`)"
-                    . " VALUES (NULL, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
+                    . " VALUES ('', ?, ?, ?, ?, ?, ?, ?,?,?,?)";
 
             $p_sql = Conexao::getInstance()->prepare($sql);
             $p_sql->bindValue(1, $nome);
@@ -97,6 +97,21 @@ class DAO {
             $sql = "SELECT empresa.id_empresa, empresa.nome, empresa.endereco, empresa.telefone, empresa.celular, empresa.horario_abertura, empresa.horario_fechamento,empresa.paracatucard,cat1.categoria as cat_um , cat2.categoria as cat_dois, "
                     . "cat3.categoria as cat_tres FROM empresa LEFT join categoria as cat1 ON (cat1.id_categoria = empresa.categoria) LEFT join categoria as cat2 "
                     . "ON (cat2.id_categoria = empresa.categoria_dois) LEFT join categoria as cat3 ON (cat3.id_categoria = empresa.categoria_tres) ORDER BY empresa.nome";
+
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
+    
+    function listarAutonomos() {
+        try {
+
+            $sql = "SELECT profissional_autonomo.id_empresa, profissional_autonomo.nome, profissional_autonomo.endereco, profissional_autonomo.telefone, profissional_autonomo.celular, profissional_autonomo.horario_abertura, profissional_autonomo.horario_fechamento,profissional_autonomo.paracatucard,cat1.categoria as cat_um , cat2.categoria as cat_dois, "
+                    . "cat3.categoria as cat_tres FROM profissional_autonomo LEFT join categoria_autonomos as cat1 ON (cat1.id_categoria = profissional_autonomo.categoria) LEFT join categoria as cat2 "
+                    . "ON (cat2.id_categoria = profissional_autonomo.categoria_dois) LEFT join categoria as cat3 ON (cat3.id_categoria = profissional_autonomo.categoria_tres) ORDER BY profissional_autonomo.nome";
 
             $stmt = Conexao::getInstance()->prepare($sql);
             $stmt->execute();

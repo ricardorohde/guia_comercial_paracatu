@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <?php
-//session_start();
 ini_set('display_errors',1);
 ini_set('display_startup_erros',1);
 error_reporting(E_ALL);
@@ -8,11 +7,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/DAO/DAO.php';
 $obj = DAO::getInstance();
 $categorias = $obj->listarCategoriasAutonomos();
 
-/*require_once $_SERVER['DOCUMENT_ROOT'] . '/utils/sessao.php';
-$sessao = new Sessao();
-if($sessao->getNode('user')!= 'logado'){
-    echo '<script>alert("Faça login para continuar"); window.location.href = "/login.php";</script>';
-}*/
 ?>
 
 <html>

@@ -2,7 +2,7 @@
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/DAO/DAO.php';
 $obj = DAO::getInstance();
-$empresas = $obj->listarEmpresas();
+$empresas = $obj->listarAutonomos();
 $senha_do_painel = $obj->buscarSenha();
 $senha_do_painel = $senha_do_painel[0]->senha;
 
