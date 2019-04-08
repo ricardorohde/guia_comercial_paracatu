@@ -76,3 +76,11 @@ ALTER TABLE `profissional_autonomo`
   ADD CONSTRAINT `id_categoria_autonomos` FOREIGN KEY (`categoria`) REFERENCES `categoria_autonomos` (`id_categoria`),
   ADD CONSTRAINT `id_categoria_dois_autonomos` FOREIGN KEY (`categoria_dois`) REFERENCES `categoria_autonomos` (`id_categoria`),
   ADD CONSTRAINT `id_categoria_tres_autonomos` FOREIGN KEY (`categoria_tres`) REFERENCES `categoria_autonomos` (`id_categoria`);
+
+CREATE TABLE classificado(
+ id_classificado int(11) not null AUTO_INCREMENT PRIMARY KEY,
+ descricao text not null,
+ imagem_um text,
+ imagem_dois text, 
+ imagem_tres text
+);
