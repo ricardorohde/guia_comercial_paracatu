@@ -46,40 +46,27 @@ if ($empresa->horario_abertura == "") {
 
     <body>
         <div class="container" >
-            <br>
-            <div class="col-md-12 col-md-offset-0" style="background-color:#f6f6f6">
-                <br>
-                <div class="form-group">
-                    <div id="NomeDaEmpresa">
-                        <b><p style="font-size: 130%"><?php echo $empresa->nome; ?></p></b>
-                    </div>
-                </div>               
-                <div class="form-group">
-                    <i style="margin-top: 1%; font-size:20px;" class="fas fa-map-marker-alt fa-2x"> <?php echo $empresa->endereco; ?></i><br> 
-                    <a href="tel:<?php echo $empresa->telefone; ?>"><p><i style="margin-top: 3%; font-size:20px;" class="fas fa-phone-square">&nbsp;<?php echo $empresa->telefone; ?></i></p><br></a> 
-                    <a href="tel:<?php echo $empresa->celular; ?>"><p><i style="margin-top: -4%; font-size:20px;" class="fas fa-mobile-alt fa-2x">&nbsp;<?php echo $empresa->celular; ?></i></p><br></a> 
-                    <i style="margin-top: -3%; font-size:20px;" class="fas fa-clock fa-2x"> <?php echo $empresa->horario_abertura . "h ás " . $empresa->horario_fechamento . "h"; ?></i><br> 
-                    <i style="margin-top: 1%; font-size:20px;" class="fas fa-credit-card fa-2x"> <?php echo $ptucard ?></i><br> 
-                </div>
-
-                <div class="form-group">
-                    <div id="servicos" style="background-color:#f6f6f6 "width="300" height="100">
-                        <p style="font-size: 30%">&nbsp;<?php echo $empresa->servicos; ?></p>
-                    </div>
-                </div> 
-                <div class="form-group">
+    <div class="container">
+        <div class="jumbotron">
+            <div class="form-group">
                     <div id="LogoDaEmpresa" style="background-color:" width="300" height="100">
                         <?php
-                        if ($logoDaempresa == 'nada') {
-                            echo '';
-                        } else {
-                            echo "<img style='width:100%; height:100' src='$logoDaempresa'>";
-                        }
+                            if ($logoDaempresa == 'nada') {
+                                echo '';
+                            } else {
+                                echo "<img style='width:1080; height:1920%' src='$logoDaempresa'>";
+                            }
                         ?>	                     
                     </div>
-                </div>             
-                <br>
-            </div>
+                </div>
+            <h1><?php echo $empresa->nome; ?></h1><br>
+            <i class="fas fa-map-marker-alt fa-2x"> <?php echo $empresa->endereco; ?></i><br><br>
+            <a href="tel:<?php echo $empresa->telefone; ?>"><i class="fas fa-phone-square fa-2x"> <?php echo $empresa->telefone; ?></i><br><br></a>
+            <a href="tel:<?php echo $empresa->celular; ?>"><i class="fas fa-mobile-alt fa-2x"> <?php echo $empresa->celular; ?></i><br><br></a>
+            <i class="fas fa-clock fa-2x"> <?php echo $empresa->horario_abertura . "h ás " . $empresa->horario_fechamento . "h"; ?></i><br><br>
+            <i class="fas fa-credit-card fa-2x"> <?php echo $ptucard ?></i><br><br>  
+        </div>
+    </div>
             <div class="form-group">                               
                 <div id="propagandas" width="300" height="100">                      
                     <?php

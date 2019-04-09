@@ -25,6 +25,7 @@ if ($empresa->horario_abertura == "") {
     $empresa->horario_abertura = "08:00";
     $empresa->horario_fechamento = "18:00";
 }
+
 ?>
 
 <html>
@@ -41,7 +42,29 @@ if ($empresa->horario_abertura == "") {
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     </head>
 
-    <body>
+    <body>    
+    <div class="container">
+        <div class="jumbotron">
+            <div class="form-group">
+                    <div id="LogoDaEmpresa">
+                        <?php
+                            if ($logoDaempresa == 'nada') {
+                                echo '';
+                            } else {
+                                echo "<img style='width:100%; height:100%' src='$logoDaempresa'>";
+                            }
+                        ?>	                     
+                    </div>
+                </div>
+            <h1><?php echo $empresa->nome; ?></h1>
+            <i class="fas fa-map-marker-alt fa-2x"> <?php echo $empresa->endereco; ?></i><br><br>
+            <a href="tel:<?php echo $empresa->telefone; ?>"><i class="fas fa-phone-square fa-2x"> <?php echo $empresa->telefone; ?></i><br><br></a>
+            <a href="tel:<?php echo $empresa->celular; ?>"><i class="fas fa-mobile-alt fa-2x"> <?php echo $empresa->celular; ?></i><br><br></a>
+            <i class="fas fa-clock fa-2x"> <?php echo $empresa->horario_abertura . "h ás " . $empresa->horario_fechamento . "h"; ?></i><br><br>
+            <i class="fas fa-credit-card fa-2x"> <?php echo $ptucard ?></i><br><br>  
+        </div>
+    </div>
+        <!--
         <div class="container" >
             <br>
             <div class="col-md-12 col-md-offset-0" style="background-color:#f6f6f6">
@@ -67,11 +90,11 @@ if ($empresa->horario_abertura == "") {
                 <div class="form-group">
                     <div id="LogoDaEmpresa" style="background-color:" width="300" height="100">
                         <?php
-                        if ($logoDaempresa == 'nada') {
-                            echo '';
-                        } else {
-                            echo "<img style='width:100%; height:100' src='$logoDaempresa'>";
-                        }
+                            if ($logoDaempresa == 'nada') {
+                                echo '';
+                            } else {
+                                echo "<img style='width:100%; height:100%' src='$logoDaempresa'>";
+                            }
                         ?>	                     
                     </div>
                 </div>
@@ -109,5 +132,6 @@ if ($empresa->horario_abertura == "") {
                 </div>
             </div>
         </div>
+        -->
     </body>
 </html>
