@@ -496,7 +496,7 @@ if ($option == 'cadastrarAutonomo') {
         echo 'Erro ao Fazer Cadastro!';
     }
 } else if($option == 'cadastrarLogoProfossional'){
-     $empresa = $_REQUEST['empresa'];
+    $empresa = $_REQUEST['empresa'];
     if ($empresa == null) {
         echo 'Selecione a empresa';
     }
@@ -536,7 +536,7 @@ if ($option == 'cadastrarAutonomo') {
 
     $caminho_final = $caminho . $nomeAleatorio;
 
-    if ($obj->cadastrarLogos($empresa, $caminho_final)) {
+    if ($obj->cadastrarLogosProfissional($empresa, $caminho_final)) {
         echo 'Cadastro Realizado Com Sucesso!';
     } else {
         echo 'Erro ao Fazer Cadastro!';

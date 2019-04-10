@@ -155,7 +155,7 @@ $(document).ready(function () {
         form = document.getElementById('formCadLogoProfissional');
         var formData = new FormData();
 
-        formData.append('acao', 'cadastrarLogoProfissional');
+        formData.append('acao', 'cadastrarLogoProfossional');
         formData.append('empresa', form.empresaSelecionada.value);
         formData.append('imagemLogo', $('#logo2').prop('files')[0]);
 
