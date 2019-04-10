@@ -495,7 +495,53 @@ if ($option == 'cadastrarAutonomo') {
     } else {
         echo 'Erro ao Fazer Cadastro!';
     }
-} else if ($option == 'excluirLogo') {
+} else if($option == 'cadastrarLogoProfossional'){
+     $empresa = $_REQUEST['empresa'];
+    if ($empresa == null) {
+        echo 'Selecione a empresa';
+    }
+    
+    //Flag que indica se há erro ou não
+    $erro = null;
+
+    //Quando enviado o formulário
+    if (isset($_FILES['imagemLogo'])) {
+
+        // Extensões permitidas 
+        $extensoes = array(".png", ".jpg", ".jpeg");
+
+        //Caminho onde ficarão os arquivos  
+        $caminho = $_SERVER['DOCUMENT_ROOT'] . '/logos/';
+
+        //Recuperando informações do arquivo       
+        $nome = $_FILES['imagemLogo']['name'];
+        $temp = $_FILES['imagemLogo']['tmp_name'];
+
+        //Verifica se a extensão é permitida     
+        if (!in_array(strtolower(strrchr($nome, ".")), $extensoes)) {
+            $erro = 'Extensão inválida';
+        }
+
+        //Se não houver erro
+        if (!isset($erro)) {
+
+            //Gerando um nome aleatório para o arquivo
+            $nomeAleatorio = md5(uniqid(time())) . strrchr($nome, ".");
+
+            //Movendo arquivo para servidor           
+            if (!move_uploaded_file($temp, $caminho . $nomeAleatorio))
+                $erro = 'Não foi possível anexar o arquivo';
+        }
+    }
+
+    $caminho_final = $caminho . $nomeAleatorio;
+
+    if ($obj->cadastrarLogos($empresa, $caminho_final)) {
+        echo 'Cadastro Realizado Com Sucesso!';
+    } else {
+        echo 'Erro ao Fazer Cadastro!';
+    }
+}else if ($option == 'excluirLogo') {
     $empresa = $_REQUEST['empresa'];
     if ($empresa == null) {
         echo 'Erro';

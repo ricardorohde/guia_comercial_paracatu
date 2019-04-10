@@ -151,6 +151,42 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $('#btnEnviarLogoProfissional').on('click touchstart', function () {
+        form = document.getElementById('formCadLogoProfissional');
+        var formData = new FormData();
+
+        formData.append('acao', 'cadastrarLogoProfissional');
+        formData.append('empresa', form.empresaSelecionada.value);
+        formData.append('imagemLogo', $('#logo2').prop('files')[0]);
+
+        var senha = prompt("Digite A Sua Senha");
+        resp = verificaSenha();
+        if (resp == senha) {
+            $.ajax({
+                url: '/controller/controller.php',
+                data: formData,
+                type: 'post',
+
+                processData: false,
+                cache: false,
+                contentType: false,
+
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            });
+        } else {
+            alert("Senha incorreta");
+        }
+    })
+});
+
+
+
+$(document).ready(function () {
     $('#btnEnviarPropaganda').on('click touchstart', function () {
         var senha = prompt("Digite a sua senha");
         resp = verificaSenha();

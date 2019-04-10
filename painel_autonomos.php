@@ -30,8 +30,8 @@ if($senha_do_painel == ""){
         <a href="/cadastro_autonomos.php"><button class="btn btn-success">Adicionar Novo Profissional</button></a>
         <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Adicionar Nova Categoria</button>
         <a href="/painelCategorias_Autonomos.php"><button class="btn btn-warning">Editar/Excluir Categoria</button></a>
-        <a href="/CadastoDePropagandas.php"><button class="btn btn-danger">Cadastrar Propaganda</button></a>
-        <a href="/CadastoDeDestaques.php"><button class="btn btn-default">Cadastrar Destaques</button></a>
+        <a href="/CadastoDePropagandas_Autonomos.php"><button class="btn btn-danger">Cadastrar Propaganda</button></a>
+        <a href="/CadastrarLogo_Autonomos.php"><button class="btn btn-danger">Cadastrar/Excuir Logo</button></a>
         <button class="btn btn-primary" id="deslogar">Sair</button>
         <br>
         <br>

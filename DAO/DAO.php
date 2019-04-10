@@ -470,6 +470,17 @@ class DAO {
             echo "Error: " . $exc->getMessage();
         }
     }
+    
+    function listarProfissionaisOrd() {
+        try {
+            $sql = "SELECT id_empresa, nome FROM profissional_autonomo ORDER BY nome";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
 
     function listarEmpresasParacatuCard() {
         try {
@@ -551,6 +562,34 @@ class DAO {
     function excluirLogo($empresa) {
         try {
             $sql = "UPDATE empresa SET logo = ? WHERE id_empresa = ?";
+            $p_sql->bindValue(1, "");
+            $p_sql->bindValue(2, $empresa);
+
+            if ($p_sql->execute()) {
+                echo 'Deletado com Sucesso!';
+            }
+            return $p_sql->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Existe um empresa com esta categoria!";
+        }
+    }
+    function cadastrarLogosProfissional($empresa, $caminho_final) {
+        try {
+            $sql = "UPDATE profissional_autonomo SET logo = ? WHERE id_empresa = ?";
+            $p_sql = Conexao::getInstance()->prepare($sql);
+            $p_sql->bindValue(1, $caminho_final);
+            $p_sql->bindValue(2, $empresa);
+            if ($p_sql->execute()) {
+                return true;
+            }
+        } catch (Exception $exc) {
+            echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
+        }
+    }
+
+    function excluirLogoProfissional($empresa) {
+        try {
+            $sql = "UPDATE profissional_autonomo SET logo = ? WHERE id_empresa = ?";
             $p_sql->bindValue(1, "");
             $p_sql->bindValue(2, $empresa);
 
