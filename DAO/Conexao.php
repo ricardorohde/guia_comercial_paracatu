@@ -10,12 +10,11 @@ class Conexao {
     
     public static function getInstance() {
         
-       
+       $servername = "127.0.0.1";
+	$username = "root";
+	$password = "";
+	$dbname = "guiacom3_guia_paracatu";
 
-		$servername = "127.0.0.1";
-		$username = "root";
-		$password = "";
-		$dbname = "guiacom3_guia_paracatu";
 
         
         if (!isset(self::$instance)) {

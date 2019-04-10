@@ -1,0 +1,10 @@
+[10-Apr-2019 11:04:59 America/Chicago] PHP Warning:  Creating default object from empty value in /home/guiacom3/public_html/paginaDaEmpresa.php on line 25
+[10-Apr-2019 11:05:18 America/Chicago] PHP Warning:  Creating default object from empty value in /home/guiacom3/public_html/paginaDaEmpresa.php on line 25
+[10-Apr-2019 11:09:43 America/Chicago] PHP Warning:  Creating default object from empty value in /home/guiacom3/public_html/paginaDaEmpresa.php on line 25
+[10-Apr-2019 11:25:25 America/Chicago] PHP Warning:  Creating default object from empty value in /home/guiacom3/public_html/paginaDaEmpresa.php on line 25
+[10-Apr-2019 11:25:25 America/Chicago] PHP Warning:  Creating default object from empty value in /home/guiacom3/public_html/paginaDaEmpresa.php on line 25
+[10-Apr-2019 11:47:27 America/Chicago] PHP Warning:  Creating default object from empty value in /home/guiacom3/public_html/paginaDaEmpresa.php on line 25
+[10-Apr-2019 12:22:13 America/Chicago] PHP Warning:  Creating default object from empty value in /home/guiacom3/public_html/paginaDaEmpresa.php on line 25
+[10-Apr-2019 13:03:28 America/Chicago] PHP Warning:  Creating default object from empty value in /home/guiacom3/public_html/paginaDaEmpresa.php on line 25
+[10-Apr-2019 13:04:58 America/Chicago] PHP Warning:  Creating default object from empty value in /home/guiacom3/public_html/paginaDaEmpresa.php on line 25
+[10-Apr-2019 13:45:55 America/Chicago] PHP Fatal error:  Call to undefined method DAO::listarProfissionaisOrd() in /home/guiacom3/public_html/CadastrarLogo_Autonomos.php on line 6
