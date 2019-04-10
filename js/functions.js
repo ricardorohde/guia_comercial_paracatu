@@ -117,6 +117,46 @@ $(document).ready(function () {
 
 
 $(document).ready(function () {
+    $('#btnExcluirLogoProfissional').on('click touchstart', function () {
+        form = document.getElementById('excluirLogos');
+        var formData = new FormData();
+
+        formData.append('acao', 'excluirLogoProfissional');
+        formData.append('empresa', form.logoSelecionada.value);
+
+        var senha = prompt("Digite A Sua Senha");
+        resp = verificaSenha();
+        if (resp == senha) {
+            if (confirm("Tem Certeza que Deseja Excluir Esta Logo ?")) {
+                $.ajax({
+                    url: '/controller/controller.php',
+                    data: formData,
+                    type: 'post',
+
+                    processData: false,
+                    cache: false,
+                    contentType: false,
+
+                    success: function (data) {
+                        alert(data);
+                        location.reload();
+                    },
+                    error: function (data) {
+                        alert(data);
+                        location.reload();
+                    }
+                });
+            } else {
+                alert('Cancelado com Sucesso');
+            }
+        } else {
+            alert("Senha incorreta");
+        }
+    });
+});
+
+
+$(document).ready(function () {
     $('#btnEnviarLogo').on('click touchstart', function () {
         form = document.getElementById('formCadLogo');
         var formData = new FormData();

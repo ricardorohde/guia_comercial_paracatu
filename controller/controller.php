@@ -15,17 +15,17 @@ if ($option == 'cadastrarAutonomo') {
     $categoria_um = $_REQUEST['categoria_um'];
     $categoria_dois = $_REQUEST['categoria_dois'];
     $categoria_tres = $_REQUEST['categoria_tres'];
-	
-	$a = $obj->buscarAutonomo_tres($nome);
-    	$b = count($a);
 
-	if($b == 0){
-		echo('Sucesso!');
-	}else{
-		echo('Esta Empresa Já Existe');
-		return;
-	}
-	
+    $a = $obj->buscarAutonomo_tres($nome);
+    $b = count($a);
+
+    if ($b == 0) {
+        echo('Sucesso!');
+    } else {
+        echo('Esta Empresa Já Existe');
+        return;
+    }
+
     if ($nome == "") {
         echo 'Digite O Nome Da Empresa';
         return;
@@ -77,17 +77,17 @@ if ($option == 'cadastrarAutonomo') {
     $categoria_um = $_REQUEST['categoria_um'];
     $categoria_dois = $_REQUEST['categoria_dois'];
     $categoria_tres = $_REQUEST['categoria_tres'];
-	
-	$a = $obj->buscarempresa_tres($nome);
-    	$b = count($a);
 
-	if($b == 0){
-		echo('Sucesso!');
-	}else{
-		echo('Esta Empresa Já Existe');
-		return;
-	}
-	
+    $a = $obj->buscarempresa_tres($nome);
+    $b = count($a);
+
+    if ($b == 0) {
+        echo('Sucesso!');
+    } else {
+        echo('Esta Empresa Já Existe');
+        return;
+    }
+
     if ($nome == "") {
         echo 'Digite O Nome Da Empresa';
         return;
@@ -141,7 +141,7 @@ if ($option == 'cadastrarAutonomo') {
     } else {
         $obj->excluirAutonomo($id);
     }
-}  else if ($option == 'editarEmpresa') {
+} else if ($option == 'editarEmpresa') {
     $pieces = explode("=", $_REQUEST['id']);
     $id_empresa = $pieces[1];
     $nome = $_REQUEST['nome'];
@@ -198,7 +198,7 @@ if ($option == 'cadastrarAutonomo') {
     } else {
         echo 'Erro ao Fazer Cadastro!';
     }
-} else if($option == 'editarAutonomo'){
+} else if ($option == 'editarAutonomo') {
     $pieces = explode("=", $_REQUEST['id']);
     $id_empresa = $pieces[1];
     $nome = $_REQUEST['nome'];
@@ -255,7 +255,7 @@ if ($option == 'cadastrarAutonomo') {
     } else {
         echo 'Erro ao Fazer Cadastro!';
     }
-}else if ($option == 'adicionarCat') {
+} else if ($option == 'adicionarCat') {
 
     $nome = $_REQUEST['nome'];
     $categorias = $obj->listarCategorias();
@@ -285,7 +285,7 @@ if ($option == 'cadastrarAutonomo') {
         echo 'Categoria Já Existente';
         return;
     }
-}else if ($option == 'adicionarCatAutonomos') {
+} else if ($option == 'adicionarCatAutonomos') {
     $nome = $_REQUEST['nome'];
     $categorias = $obj->listarCategoriasAutonomos();
     $teste = true;
@@ -321,14 +321,14 @@ if ($option == 'cadastrarAutonomo') {
     } else {
         $obj->excluirCategoria($id);
     }
-}else if ($option == 'excluirCategoriaAutonomos') {
+} else if ($option == 'excluirCategoriaAutonomos') {
     $id = $_REQUEST['id'];
     if ($id == null) {
         echo 'Erro';
     } else {
         $obj->excluirCategoriaAutonomos($id);
     }
-}else if ($option == 'alterarCategoria') {
+} else if ($option == 'alterarCategoria') {
     $id = $_REQUEST['id'];
     $novoNome = $_REQUEST['novoNome'];
     if ($novoNome == "") {
@@ -343,7 +343,7 @@ if ($option == 'cadastrarAutonomo') {
             return;
         }
     }
-}else if ($option == 'alterarCategoriaAutonomos') {
+} else if ($option == 'alterarCategoriaAutonomos') {
     $id = $_REQUEST['id'];
     $novoNome = $_REQUEST['novoNome'];
     if ($novoNome == "") {
@@ -495,12 +495,12 @@ if ($option == 'cadastrarAutonomo') {
     } else {
         echo 'Erro ao Fazer Cadastro!';
     }
-} else if($option == 'cadastrarLogoProfossional'){
+} else if ($option == 'cadastrarLogoProfossional') {
     $empresa = $_REQUEST['empresa'];
     if ($empresa == null) {
         echo 'Selecione a empresa';
     }
-    
+
     //Flag que indica se há erro ou não
     $erro = null;
 
@@ -541,12 +541,19 @@ if ($option == 'cadastrarAutonomo') {
     } else {
         echo 'Erro ao Fazer Cadastro!';
     }
-}else if ($option == 'excluirLogo') {
+} else if ($option == 'excluirLogo') {
     $empresa = $_REQUEST['empresa'];
     if ($empresa == null) {
         echo 'Erro';
     } else {
         $obj->excluirLogo($empresa);
+    }
+} else if ($option == 'excluirLogoProfissional') {
+    $empresa = $_REQUEST['empresa'];
+    if ($empresa == null) {
+        echo 'Erro';
+    } else {
+        $obj->excluirLogoProfissional($empresa);
     }
 } else if ($option == 'login') {
     $login = $_REQUEST['login'];
@@ -632,15 +639,14 @@ if ($option == 'cadastrarAutonomo') {
 } else if ($option == 'cadastrarSenhaPainel') {
     $senha = $_REQUEST['senha'];
     $senha_dois = $_REQUEST['senha_dois'];
-    
-    if($senha == $senha_dois){
-        if($obj->addSenhaPainel($senha)){
+
+    if ($senha == $senha_dois) {
+        if ($obj->addSenhaPainel($senha)) {
             echo 'Senha Cadastrada Com Sucesso';
-        }else{
+        } else {
             echo 'Erro';
         }
-    }else{
+    } else {
         echo 'Campos com senhas diferentes.';
     }
-    
 }
