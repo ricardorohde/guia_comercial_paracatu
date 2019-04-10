@@ -72,7 +72,7 @@ $empresas = $obj->listarProfissionaisOrd();
                                         ?>
                                     </select>
                                 </div>                                                                                                                    
-                                <button class="btn btn-danger" id="btnExcluirLogo" type="button">
+                                <button class="btn btn-danger" id="btnExcluirLogoProfissional" type="button">
                                     Excluir
                                 </button>
                                 
