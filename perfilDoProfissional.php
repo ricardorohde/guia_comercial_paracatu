@@ -1,12 +1,15 @@
 ﻿﻿<!DOCTYPE html>
 <?php
-$id = $_GET['action'];
 require_once $_SERVER['DOCUMENT_ROOT'] . '/DAO/DAO.php';
+
+$nome_da_empresa = $_GET['action'];
 $obj = DAO::getInstance();
-$empresa = $obj->buscarempresa($id);
+$empresa = $obj->buscarprofissional_porNome($nome_da_empresa);
 $empresa = $empresa[0];
-$url_antiga = $_GET['url_antiga'];
-$propagandas = $obj->listarPropagandas($id);
+$empresa = $obj->buscarprofissional($empresa->id_empresa);
+$empresa = $empresa[0];
+
+$propagandas = $obj->listarPropagandas($empresa->id_empresa);
 
 if ($empresa->logo) {
     $pedacos = explode("public_html", $empresa->logo);
@@ -25,8 +28,6 @@ if ($empresa->horario_abertura == "") {
     $empresa->horario_abertura = "08:00";
     $empresa->horario_fechamento = "18:00";
 }
-
-
 ?>
 
 <html>
@@ -43,7 +44,8 @@ if ($empresa->horario_abertura == "") {
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     </head>
 
-    <body>    
+    <body>
+        <div class="container" >
     <div class="container">
         <div class="jumbotron">
             <div class="form-group">
@@ -52,13 +54,13 @@ if ($empresa->horario_abertura == "") {
                             if ($logoDaempresa == 'nada') {
                                 echo '';
                             } else {
-				$pedacos = explode("htdocs", $empresa->logo);
+								$pedacos = explode("htdocs", $empresa->logo);
                                 echo "<img class='img-thumbnail' src='$logoDaempresa'>";			
                             }
                         ?>	                     
                     </div>
                 </div>
-            <h1><?php echo $empresa->nome; ?></h1>
+            <h1><?php echo $empresa->nome; ?></h1><br>
             <i class="fas fa-map-marker-alt fa-2x"> <?php echo $empresa->endereco; ?></i><br><br>
             <a href="tel:<?php echo $empresa->telefone; ?>"><i class="fas fa-phone-square fa-2x"> <?php echo $empresa->telefone; ?></i><br><br></a>
             <a href="tel:<?php echo $empresa->celular; ?>"><i class="fas fa-mobile-alt fa-2x"> <?php echo $empresa->celular; ?></i><br><br></a>
@@ -66,47 +68,6 @@ if ($empresa->horario_abertura == "") {
             <i class="fas fa-credit-card fa-2x"> <?php echo $ptucard ?></i><br><br>  
         </div>
     </div>
-        <!--
-        <div class="container" >
-            <br>
-            <div class="col-md-12 col-md-offset-0" style="background-color:#f6f6f6">
-                <br>
-                <div class="form-group">
-                    <div id="NomeDaEmpresa">
-                        <b><p style="font-size: 130%"><?php echo $empresa->nome; ?></p></b>
-                    </div>
-                </div>               
-                <div class="form-group">
-                    <i style="margin-top: 1%; font-size:20px;" class="fas fa-map-marker-alt fa-2x"> <?php echo $empresa->endereco; ?></i><br> 
-                    <a href="tel:<?php echo $empresa->telefone; ?>"><p><i style="margin-top: 3%; font-size:20px;" class="fas fa-phone-square">&nbsp;<?php echo $empresa->telefone; ?></i></p><br></a> 
-                    <a href="tel:<?php echo $empresa->celular; ?>"><p><i style="margin-top: -4%; font-size:20px;" class="fas fa-mobile-alt fa-2x">&nbsp;<?php echo $empresa->celular; ?></i></p><br></a> 
-                    <i style="margin-top: -3%; font-size:20px;" class="fas fa-clock fa-2x"> <?php echo $empresa->horario_abertura . "h ás " . $empresa->horario_fechamento . "h"; ?></i><br> 
-                    <i style="margin-top: 1%; font-size:20px;" class="fas fa-credit-card fa-2x"> <?php echo $ptucard ?></i><br> 
-                </div>
-
-                <div class="form-group">
-                    <div id="servicos" style="background-color:#f6f6f6 "width="300" height="100">
-                        <p style="font-size: 30%">&nbsp;<?php echo $empresa->servicos; ?></p>
-                    </div>
-                </div> 
-                <div class="form-group">
-                    <div id="LogoDaEmpresa" style="background-color:" width="300" height="100">
-                        <?php
-                            if ($logoDaempresa == 'nada') {
-                                echo '';
-                            } else {
-                                echo "<img style='width:100%; height:100%' src='$logoDaempresa'>";
-                            }
-                        ?>	                     
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div id="" style="background-color:" width="300" height="100"> 
-                        <button type="button" class="btn btn-success btn-lg" id="btnVoltarLista2" onclick="btnVoltarLista2('<?php echo $url_antiga; ?>');">Voltar</button>
-                    </div>
-                </div>              
-                <br>
-            </div>
             <div class="form-group">                               
                 <div id="propagandas" width="300" height="100">                      
                     <?php
@@ -134,6 +95,5 @@ if ($empresa->horario_abertura == "") {
                 </div>
             </div>
         </div>
-        -->
     </body>
 </html>

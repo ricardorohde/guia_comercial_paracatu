@@ -12,7 +12,7 @@ $empresa = $empresa[0];
 $propagandas = $obj->listarPropagandas($empresa->id_empresa);
 
 if ($empresa->logo) {
-    $pedacos = explode("htdocs", $empresa->logo);
+    $pedacos = explode("public_html", $empresa->logo);
     $logoDaempresa = $pedacos[1];
 } else {
     $logoDaempresa = 'nada';
@@ -49,12 +49,13 @@ if ($empresa->horario_abertura == "") {
     <div class="container">
         <div class="jumbotron">
             <div class="form-group">
-                    <div id="LogoDaEmpresa" style="background-color:" width="300" height="100">
+                    <div id="LogoDaEmpresa">
                         <?php
                             if ($logoDaempresa == 'nada') {
                                 echo '';
                             } else {
-                                echo "<img style='width:1080; height:1920%' src='$logoDaempresa'>";
+								$pedacos = explode("htdocs", $empresa->logo);
+                                echo "<img class='img-thumbnail' src='$logoDaempresa'>";			
                             }
                         ?>	                     
                     </div>

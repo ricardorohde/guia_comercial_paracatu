@@ -188,6 +188,18 @@ class DAO {
             echo "Error: " . $exc->getMessage();
         }
     }
+	
+	function buscarprofissional($id) {
+        try {
+            $sql = "SELECT * FROM profissional_autonomo WHERE id_empresa = ?";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->bindValue(1, $id);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
     
     function buscarAutonomo($id) {
         try {
@@ -212,6 +224,18 @@ class DAO {
             echo "Error: " . $exc->getMessage();
         }
     }
+	
+	function buscarprofissional_porNome($nome) {
+        try {
+            $sql = "select profissional_autonomo.id_empresa, profissional_autonomo.nome FROM profissional_autonomo WHERE profissional_autonomo.nome = ?";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->bindValue(1, $nome);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
 
 
     function buscarempresa_dois($id) {
@@ -225,6 +249,8 @@ class DAO {
             echo "Error: " . $exc->getMessage();
         }
     }
+	
+	
 	
 	function buscarempresa_tres($nome) {
         try {
@@ -374,6 +400,21 @@ class DAO {
             echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
         }
     }
+	
+	function buscarProfissionaisPorCategoria($id) {
+        try {
+
+            $sql = "SELECT id_empresa, nome FROM profissional_autonomo WHERE categoria = ? or categoria_dois = ? or categoria_tres = ? ORDER BY nome ASC";
+            $stmt = Conexao::getInstance()->prepare($sql);
+            $stmt->bindValue(1, $id);
+            $stmt->bindValue(2, $id);
+            $stmt->bindValue(3, $id);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
+        }
+    }
 
     function buscarEmpresasPorPalavraChave($palavraChave) {
         try {
@@ -386,6 +427,7 @@ class DAO {
             echo "Ocorreu um erro ao tentar executar esta ação. <br> $exc";
         }
     }
+	
      
     function buscarCategoriasPorPalavraChave($palavraChave) {
         try {
@@ -633,6 +675,17 @@ class DAO {
         }
     }
 	
+	function buscarCategoriaProfissionalPorNome($nome) {
+        try {
+            $sql = "select categoria_autonomos.id_categoria FROM categoria_autonomos where categoria = ?";
+            $stmt = Conexao::getInstance()->prepare($sql);
+			$stmt->bindValue(1, $nome);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $exc) {
+            echo "Error: " . $exc->getMessage();
+        }
+    }
 	
 	
 }

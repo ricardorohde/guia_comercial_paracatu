@@ -31,7 +31,7 @@ if($senha_do_painel == ""){
         <a href="/cadastro.php"><button class="btn btn-success">Adicionar Nova Empresa</button></a>
         <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Adicionar Nova Categoria</button>
         <a href="/painelCategorias.php"><button class="btn btn-warning">Editar/Excluir Categoria</button></a>
-        <a href="/CadastrarLogo.php"><button class="btn btn-danger">Cadastrar Logo</button></a>
+        <a href="/CadastrarLogo.php"><button class="btn btn-danger">Cadastrar/Excuir Logo</button></a>
         <a href="/CadastoDePropagandas.php"><button class="btn btn-danger">Cadastrar Propaganda</button></a>
         <a href="/CadastoDeDestaques.php"><button class="btn btn-default">Cadastrar Destaques</button></a>
         <a href="/painel_autonomos.php"><button class="btn btn-danger">Profissionais Autônomos</button></a>
