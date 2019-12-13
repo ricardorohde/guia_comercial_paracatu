@@ -5,3 +5,6 @@ $obj = DAO::getInstance();
 $categorias = $obj->listarCategorias_classificados() ;
 print_r(json_encode($categorias));
 ?>
+
+
+//vai tomar no cu
